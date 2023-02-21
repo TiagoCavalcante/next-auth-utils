@@ -28,7 +28,7 @@ import { withAuth } from "next-auth-utils"
 import { GetServerSidePropsContext } from "next"
 
 export default function Page() {
-	...
+  ...
 }
 
 export async function getServerSideProps(
@@ -36,8 +36,8 @@ export async function getServerSideProps(
 ) {
   ...
 
-	// This will redirect the user to the sign-in
-	// page if the user isn't signed-in.
+  // This will redirect the user to the sign-in
+  // page if the user isn't signed-in.
   return withAuth(context, { props: { ... } })
 }
 
@@ -50,10 +50,10 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
-	// If the user is not signed-in will exit
-	// and return a 401 status code.
+  // If the user is not signed-in will exit
+  // and return a 401 status code.
   if (!await auth(req, res, authOptions)) return
 
-	...
+  ...
 }
 ```
