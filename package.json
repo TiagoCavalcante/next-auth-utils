@@ -1,7 +1,7 @@
 {
   "name": "next-auth-utils",
   "version": "1.0.0",
-  "description": " Utilities for a next-auth protect website ",
+  "description": " Utilities for a next-auth protected website ",
   "main": "lib/index.cjs.js",
   "module": "lib/index.esm.js",
   "types": "lib/index.d.ts",

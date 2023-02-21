@@ -1,6 +1,6 @@
 # next-auth-utils
 
-Utilities for a next-auth protect website
+Utilities for a next-auth protected website
 
 ## Install
 
