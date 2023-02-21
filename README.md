@@ -1,17 +1,59 @@
-# react-library-template
+# next-auth-utils
 
-A template for seamlessly creating a ReactJS library with TypeScript
+Utilities for a next-auth protect website
 
-## Using this template
+## Install
 
-Press the green button saying "Use this template".
+next-auth-utils is distributed as a
+[npm package](https://www.npmjs.com/package/next-auth-utils)
+and can be installed as follows:
+```
+// with npm
+npm install next-auth-utils
+// with yarn
+yarn add next-auth-utils
+```
 
-![Screenshot of the GitHub page](https://user-images.githubusercontent.com/62714153/163737099-e5db5e9f-2a09-4a68-9049-2a5ec40fab0e.png)
+## Example
 
-## Quickstart
+```ts
+// This should be in your repository, if it isn't
+// there you should read next-auth's documentation:
+// https://next-auth.js.org/getting-started/example
+import { authOptions } from "@/pages/api/auth/[...nextauth]"
 
-1. `npm install`
-2. Customize the package.json file with the information about your project. Don't forget to change the license if you don't want MIT! Once a license is choosed it is hard to (legally) change it
-3. Replace the code from src/ with your code
-4. Add the files you want to delete after the build (if there are any) in rollup.config.js. Istead of deleting them you can just add to .gitignore
-5. Run `npm publish` and wait people to use your library
+// In a server side rendered page:
+import { withAuth } from "next-auth-utils"
+// Used in TS projects
+import { GetServerSidePropsContext } from "next"
+
+export default function Page() {
+	...
+}
+
+export async function getServerSideProps(
+  context: GetServerSidePropsContext,
+) {
+  ...
+
+	// This will redirect the user to the sign-in
+	// page if the user isn't signed-in.
+  return withAuth(context, { props: { ... } })
+}
+
+// In a API route:
+import { auth } from "next-auth-utils"
+// Used in TS projects
+import { NextApiRequest, NextApiResponse } from "next"
+
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse,
+) {
+	// If the user is not signed-in will exit
+	// and return a 401 status code.
+  if (!await auth(req, res, authOptions)) return
+
+	...
+}
+```

@@ -1,12 +1,12 @@
 {
   "compilerOptions": {
-    "module": "ESNext",
     "allowJs": false,
     "declaration": true,
     "esModuleInterop": true,
+    "module": "ESNext",
     "moduleResolution": "Node",
     "noImplicitAny": true,
-    "jsx": "react"
+    "resolveJsonModule": true
   },
   "include": [
     "src/**/*"
